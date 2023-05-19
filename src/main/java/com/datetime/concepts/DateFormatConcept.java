@@ -64,7 +64,7 @@ public class DateFormatConcept {
         
         dateFormat.contains("h");
         
-        for(char c :timeArr)
+        //for(char c :timeArr)
         int result = Arrays.binarySearch(arr, 'H');
         
     }

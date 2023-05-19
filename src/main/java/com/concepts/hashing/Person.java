@@ -15,11 +15,36 @@ public class Person {
 	public Person(String name) {
 		this.name = name;
 	}
-
-	public int hashCode() {
-		return 420;
-	}
 	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		return result;
+	}
+
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Person other = (Person) obj;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
+		return true;
+	}
+
+
+
 	public static void main(String[] args) {
 		
 		Map<Person, Integer> map = new HashMap<Person, Integer>();
@@ -38,5 +63,22 @@ public class Person {
 		Set s = props.keySet();
 		s = new TreeSet<String>(s);
 		
+		
+		//test null key in hash map
+		System.out.println("Testing if we can get a object using Null key in hashmap start ");
+		testNullKeyInHashMap();
+		assert(testNullKeyInHashMap());
+		System.out.println("Testing Null key in hashmap end ");
+	}
+	
+	
+	public static boolean testNullKeyInHashMap() {
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put(null, 4);
+		
+		
+		System.out.println(map.get(null));
+		
+		return map.get(null) != null;
 	}
 }

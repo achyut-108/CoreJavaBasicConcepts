@@ -24,7 +24,8 @@ public class ReflectionTest {
 
 			// Enum.valueOf( reflectionEnum.getClass(), "ALL");
 			
-			Class reflectionClassNewInstance = (enumClass.getClass()) reflectionClass.newInstance();
+			Class reflectionClassNewInstance = (Class) reflectionClass.newInstance();
+					//(enumClass.getClass()) (reflectionClass.newInstance());
 
 			Method setterMethod = reflectionClassNewInstance.getMethod("setReflectionEnum", enumClass);
 			setterMethod.invoke(reflectionClassNewInstance, Enum.valueOf((Class<? extends Enum>) enumClass, "ALL"));
